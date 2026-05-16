@@ -2,7 +2,7 @@ import Image from 'next/image';
 
 export default function Founder() {
   return (
-    <section style={styles.section}>
+    <section style={styles.section} className="section-padding">
       <div className="container">
         <div style={styles.header}>
           <span style={styles.subtitle}>স্বপ্ন থেকে সৃষ্টি</span>
@@ -18,7 +18,7 @@ export default function Founder() {
           </div>
         </div>
         
-        <div style={styles.contentWrapper}>
+        <div style={styles.contentWrapper} className="flex-responsive">
           <div style={styles.imageCol}>
             <div style={styles.imageFrame}>
               <div style={styles.cornerTop}></div>
@@ -36,7 +36,7 @@ export default function Founder() {
             <h4 style={styles.authorName}>আকাশ চক্রবর্তী</h4>
             <div style={styles.description}>
               <p>আকাশ চক্রবর্তীর বেড়ে ওঠা শহরে নয়, বরং এক সাধারণ মফস্বলে। ছোটবেলা থেকেই বইয়ের পাতায় মজে থাকা এই তরুণ স্বপ্ন দেখতেন নিজের একটি প্রকাশনীর। সেই স্বপ্নই আজ রূপ নিয়েছে &lsquo;নবদিগন্ত&rsquo;-এ। সাহিত্য ও প্রকাশনার জগতে আরও এগিয়ে যাওয়ার লক্ষ্য নিয়ে তিনি নিরলসভাবে কাজ করে চলেছেন।</p>
-              <p>বাংলার হারানো সাহিত্যিক মর্যাদা পুনরুদ্ধার এবং নতুন কলমের খোঁজে এই যাত্রা অবিরাম।</p>
+              <p style={{marginTop: '1rem'}}>বাংলার হারানো সাহিত্যিক মর্যাদা পুনরুদ্ধার এবং নতুন কলমের খোঁজে এই যাত্রা অবিরাম।</p>
             </div>
             
             <button className="btn-outline-gold" style={styles.moreBtn}>
@@ -70,7 +70,7 @@ const styles = {
     fontWeight: '500',
   },
   title: {
-    fontSize: '2.8rem',
+    fontSize: 'clamp(2rem, 5vw, 2.8rem)',
     color: 'var(--dark-maroon)',
     fontWeight: '700',
     marginBottom: '1rem',
@@ -82,15 +82,18 @@ const styles = {
   },
   contentWrapper: {
     display: 'flex',
-    gap: '5rem',
+    gap: 'clamp(2rem, 5vw, 5rem)',
     alignItems: 'center',
     background: '#FFF9EF',
-    padding: '3rem',
+    padding: 'clamp(1.5rem, 5vw, 3rem)',
     borderRadius: '20px',
     boxShadow: '0 20px 50px rgba(0,0,0,0.03)',
   },
   imageCol: {
     flex: 1,
+    width: '100%',
+    maxWidth: '450px',
+    margin: '0 auto',
   },
   imageFrame: {
     position: 'relative',
@@ -107,8 +110,8 @@ const styles = {
     position: 'absolute',
     top: 0,
     left: 0,
-    width: '60px',
-    height: '60px',
+    width: '50px',
+    height: '50px',
     borderTop: '3px solid var(--accent-gold)',
     borderLeft: '3px solid var(--accent-gold)',
     zIndex: 2,
@@ -117,8 +120,8 @@ const styles = {
     position: 'absolute',
     bottom: 0,
     right: 0,
-    width: '60px',
-    height: '60px',
+    width: '50px',
+    height: '50px',
     borderBottom: '3px solid var(--accent-gold)',
     borderRight: '3px solid var(--accent-gold)',
     zIndex: 2,
@@ -132,7 +135,7 @@ const styles = {
     flex: 1.2,
   },
   contentTitle: {
-    fontSize: '1.8rem',
+    fontSize: 'clamp(1.5rem, 4vw, 1.8rem)',
     fontWeight: '700',
     color: 'var(--text-dark)',
     marginBottom: '1rem',
@@ -160,5 +163,6 @@ const styles = {
     display: 'flex',
     alignItems: 'center',
     padding: '0.8rem 2rem',
+    borderRadius: '50px',
   }
 };

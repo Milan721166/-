@@ -1,8 +1,8 @@
 export default function DiscountBanner() {
   return (
-    <section style={styles.section}>
+    <section style={styles.section} className="section-padding">
       <div className="container">
-        <div style={styles.banner}>
+        <div style={styles.banner} className="flex-responsive">
           <div style={styles.content}>
             <span style={styles.badge}>বিশেষ অফার</span>
             <h2 style={styles.title}>প্রথমবার কেনাকাটায় ২০% ছাড়</h2>
@@ -15,7 +15,7 @@ export default function DiscountBanner() {
               </svg>
             </button>
           </div>
-          <div style={styles.visual}>
+          <div style={styles.visual} className="hide-mobile">
             <div style={styles.quoteIcon}>&ldquo;</div>
           </div>
         </div>
@@ -31,8 +31,8 @@ const styles = {
   },
   banner: {
     background: '#5D1010',
-    borderRadius: '20px',
-    padding: '4rem 5rem',
+    borderRadius: '24px',
+    padding: 'clamp(2rem, 8vw, 5rem)',
     display: 'flex',
     justifyContent: 'space-between',
     alignItems: 'center',
@@ -43,6 +43,7 @@ const styles = {
   content: {
     position: 'relative',
     zIndex: 2,
+    flex: 1,
   },
   badge: {
     color: 'var(--accent-gold)',
@@ -53,9 +54,10 @@ const styles = {
   },
   title: {
     color: '#FFFFFF',
-    fontSize: '2.5rem',
-    fontWeight: '700',
+    fontSize: 'clamp(1.8rem, 6vw, 3rem)',
+    fontWeight: '800',
     marginBottom: '1rem',
+    lineHeight: '1.2',
   },
   coupon: {
     color: 'rgba(255, 255, 255, 0.7)',
@@ -71,7 +73,7 @@ const styles = {
     color: 'var(--dark-maroon)',
     border: 'none',
     padding: '1rem 2.5rem',
-    borderRadius: '8px',
+    borderRadius: '50px',
     fontWeight: '700',
     fontSize: '1rem',
     cursor: 'pointer',
@@ -82,14 +84,17 @@ const styles = {
   visual: {
     position: 'relative',
     zIndex: 1,
+    flex: 0.5,
+    display: 'flex',
+    justifyContent: 'flex-end',
   },
   quoteIcon: {
-    fontSize: '12rem',
-    color: 'rgba(255, 255, 255, 0.1)',
+    fontSize: '15rem',
+    color: 'rgba(255, 255, 255, 0.08)',
     fontFamily: 'serif',
     lineHeight: '1',
     position: 'absolute',
-    right: '-2rem',
-    top: '-4rem',
+    right: '-1rem',
+    top: '-6rem',
   }
 };

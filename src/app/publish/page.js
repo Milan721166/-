@@ -4,7 +4,7 @@ export default function PublishPage() {
   return (
     <div style={{ background: 'var(--bg-cream)', minHeight: '100vh' }}>
       <Navbar />
-      <main style={{ paddingTop: '160px', paddingBottom: '100px' }}>
+      <main style={styles.main}>
         <div className="container">
           <div style={styles.grid}>
             <div style={styles.content}>
@@ -62,76 +62,89 @@ export default function PublishPage() {
 }
 
 const styles = {
+  main: {
+    paddingTop: 'clamp(120px, 20vw, 160px)',
+    paddingBottom: '80px',
+  },
   grid: {
     display: 'grid',
-    gridTemplateColumns: '1.5fr 1fr',
-    gap: '4rem',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+    gap: 'clamp(2rem, 5vw, 4rem)',
     alignItems: 'start',
   },
   title: {
-    fontSize: '3rem',
+    fontSize: 'clamp(2rem, 8vw, 3rem)',
     color: 'var(--dark-maroon)',
     fontWeight: '800',
     marginBottom: '1.5rem',
   },
   description: {
-    fontSize: '1.2rem',
+    fontSize: '1.1rem',
     color: 'var(--text-muted)',
     lineHeight: '1.8',
     marginBottom: '3rem',
   },
   form: {
     background: '#FFF',
-    padding: '3rem',
-    borderRadius: '20px',
+    padding: 'clamp(1.5rem, 5vw, 3rem)',
+    borderRadius: '24px',
     boxShadow: '0 20px 50px rgba(0,0,0,0.05)',
+    border: '1px solid rgba(0,0,0,0.05)',
   },
   inputGroup: {
     marginBottom: '1.5rem',
   },
   label: {
     display: 'block',
-    marginBottom: '0.5rem',
+    marginBottom: '0.6rem',
     fontWeight: '600',
     color: 'var(--dark-maroon)',
+    fontSize: '0.95rem',
   },
   input: {
     width: '100%',
     padding: '1rem',
-    borderRadius: '8px',
-    border: '1px solid #ddd',
+    borderRadius: '12px',
+    border: '1px solid #E5E7EB',
     fontSize: '1rem',
+    outline: 'none',
+    transition: 'border-color 0.3s ease',
+    background: '#F9FAFB',
   },
   submitBtn: {
     width: '100%',
-    padding: '1rem',
+    padding: '1.1rem',
     background: 'var(--dark-maroon)',
     color: '#FFF',
     border: 'none',
-    borderRadius: '8px',
+    borderRadius: '12px',
     fontSize: '1.1rem',
     fontWeight: '700',
     cursor: 'pointer',
     marginTop: '1rem',
+    boxShadow: '0 10px 20px rgba(93, 16, 16, 0.2)',
   },
   infoCard: {
     background: 'var(--dark-maroon)',
     padding: '3rem',
-    borderRadius: '20px',
+    borderRadius: '24px',
     color: '#FFF',
     position: 'sticky',
-    top: '160px',
+    top: '120px',
+    boxShadow: '0 30px 60px rgba(93, 16, 16, 0.3)',
   },
   infoTitle: {
     fontSize: '1.5rem',
     marginBottom: '2rem',
     color: 'var(--accent-gold)',
+    fontWeight: '700',
   },
   ul: {
     listStyle: 'none',
     padding: 0,
     lineHeight: '2.5',
     fontSize: '1.1rem',
+    opacity: 0.9,
   },
   footer: {
     padding: '40px 0',

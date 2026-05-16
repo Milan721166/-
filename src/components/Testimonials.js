@@ -6,11 +6,11 @@ export default function Testimonials() {
   ];
 
   return (
-    <section style={styles.section}>
+    <section style={styles.section} className="section-padding">
       <div className="container">
         <div style={styles.header}>
           <span style={styles.subtitle}>বিশিষ্ট লেখকগণ</span>
-          <h2 style={styles.title}>লেখক পরিচিতি</h2>
+          <h2 style={styles.title}>পাঠক ও লেখক মতামত</h2>
           <div style={styles.separator}>
             <svg width="200" height="40" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M100 20C100 20 90 10 80 10C70 10 60 20 60 20C60 20 70 30 80 30C90 30 100 20 100 20Z" stroke="var(--accent-gold)" strokeWidth="2"/>
@@ -24,7 +24,7 @@ export default function Testimonials() {
         
         <div style={styles.grid}>
           {reviews.map((rev, i) => (
-            <div key={i} style={styles.card}>
+            <div key={i} style={styles.card} className="animate-fade">
               <div style={styles.stars}>{"★".repeat(rev.rating)}{"☆".repeat(5-rev.rating)}</div>
               <div style={styles.quoteMark}>&ldquo;</div>
               <p style={styles.text}>{rev.text}</p>
@@ -53,13 +53,15 @@ const styles = {
     marginBottom: '4rem',
   },
   subtitle: {
-    fontSize: '1rem',
+    fontSize: '0.9rem',
     color: 'var(--accent-gold)',
     display: 'block',
     marginBottom: '0.5rem',
+    fontWeight: '600',
+    letterSpacing: '2px',
   },
   title: {
-    fontSize: '2.8rem',
+    fontSize: 'clamp(2rem, 5vw, 2.8rem)',
     color: 'var(--dark-maroon)',
     fontWeight: '700',
     marginBottom: '1rem',
@@ -78,7 +80,8 @@ const styles = {
     background: '#FFF',
     padding: '2.5rem',
     borderRadius: '20px',
-    width: '350px',
+    width: '100%',
+    maxWidth: '380px',
     position: 'relative',
     boxShadow: '0 15px 40px rgba(0,0,0,0.03)',
     border: '1px solid rgba(0,0,0,0.05)',

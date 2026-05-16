@@ -9,7 +9,7 @@ export default function BookGrid() {
   ];
 
   return (
-    <section style={styles.section}>
+    <section style={styles.section} className="section-padding">
       <div className="container">
         <div style={styles.header}>
           <div>
@@ -41,7 +41,7 @@ export default function BookGrid() {
                 <div style={styles.coverPlaceholder}>
                   <Image src={book.img} alt={book.title} fill style={{objectFit: 'contain', borderRadius: '8px'}} />
                   <div style={styles.wishlist}>
-                    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
                       <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
                     </svg>
                   </div>
@@ -65,11 +65,6 @@ export default function BookGrid() {
                 
                 <div style={styles.actions}>
                   <button style={styles.cartBtn}>
-                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <circle cx="9" cy="21" r="1"></circle>
-                      <circle cx="20" cy="21" r="1"></circle>
-                      <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"></path>
-                    </svg>
                     কার্টে যোগ করুন
                   </button>
                   <button style={styles.optionsBtn}>
@@ -98,6 +93,8 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'flex-end',
     marginBottom: '3rem',
+    gap: '1rem',
+    flexWrap: 'wrap',
   },
   subtitle: {
     fontSize: '0.9rem',
@@ -107,7 +104,7 @@ const styles = {
     fontWeight: '500',
   },
   title: {
-    fontSize: '2.5rem',
+    fontSize: 'clamp(1.8rem, 5vw, 2.5rem)',
     color: 'var(--dark-maroon)',
     fontWeight: '700',
     marginBottom: '0.8rem',
@@ -126,11 +123,12 @@ const styles = {
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
+    padding: '0.5rem 0',
   },
   grid: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))',
-    gap: '2.5rem',
+    gridTemplateColumns: 'repeat(auto-fill, minmax(280px, 1fr))',
+    gap: 'clamp(1.5rem, 4vw, 2.5rem)',
   },
   card: {
     background: '#FFFFFF',
@@ -144,7 +142,7 @@ const styles = {
     padding: '1rem 1rem 0',
   },
   coverPlaceholder: {
-    height: '350px',
+    height: 'clamp(280px, 40vw, 350px)',
     borderRadius: '8px',
     position: 'relative',
     overflow: 'hidden',
@@ -155,10 +153,10 @@ const styles = {
   },
   wishlist: {
     position: 'absolute',
-    top: '1rem',
-    right: '1rem',
-    width: '36px',
-    height: '36px',
+    top: '0.8rem',
+    right: '0.8rem',
+    width: '32px',
+    height: '32px',
     background: '#FFF',
     borderRadius: '50%',
     display: 'flex',
@@ -171,16 +169,16 @@ const styles = {
     color: 'var(--accent-gold)',
   },
   info: {
-    padding: '1.5rem',
+    padding: 'clamp(1rem, 4vw, 1.5rem)',
   },
   bookTitle: {
-    fontSize: '1.4rem',
+    fontSize: '1.25rem',
     fontWeight: '700',
     marginBottom: '0.4rem',
     color: 'var(--text-dark)',
   },
   author: {
-    fontSize: '1rem',
+    fontSize: '0.95rem',
     color: 'var(--text-muted)',
     marginBottom: '1rem',
   },
@@ -192,11 +190,11 @@ const styles = {
   },
   stars: {
     color: '#FFD700',
-    letterSpacing: '3px',
-    fontSize: '1.1rem',
+    letterSpacing: '2px',
+    fontSize: '1rem',
   },
   reviews: {
-    fontSize: '0.9rem',
+    fontSize: '0.85rem',
     color: '#888',
   },
   priceRow: {
@@ -206,36 +204,32 @@ const styles = {
     marginBottom: '1.5rem',
   },
   price: {
-    fontSize: '1.6rem',
+    fontSize: '1.4rem',
     fontWeight: '700',
     color: 'var(--dark-maroon)',
   },
   oldPrice: {
-    fontSize: '1.1rem',
+    fontSize: '1rem',
     color: '#999',
     textDecoration: 'line-through',
   },
   actions: {
     display: 'flex',
-    gap: '1rem',
+    gap: '0.8rem',
   },
   cartBtn: {
     flex: 1,
     background: 'var(--dark-maroon)',
     color: '#FFF',
     border: 'none',
-    padding: '1rem',
+    padding: '0.8rem',
     borderRadius: '8px',
     fontWeight: '600',
     cursor: 'pointer',
-    display: 'flex',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: '10px',
-    fontSize: '1rem',
+    fontSize: '0.95rem',
   },
   optionsBtn: {
-    width: '50px',
+    width: '45px',
     background: '#f8f8f8',
     border: '1px solid #eee',
     borderRadius: '8px',

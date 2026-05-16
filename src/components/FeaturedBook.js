@@ -2,8 +2,8 @@ import Image from 'next/image';
 
 export default function FeaturedBook() {
   return (
-    <section style={styles.section}>
-      <div className="container" style={styles.container}>
+    <section style={styles.section} className="section-padding">
+      <div className="container flex-responsive" style={styles.container}>
         <div style={styles.visual}>
           <div style={styles.bookStack} className="featured-book-3d">
             <div style={styles.bookMain}>
@@ -50,26 +50,28 @@ export default function FeaturedBook() {
 
 const styles = {
   section: {
-    padding: '120px 0',
+    padding: '100px 0',
     background: 'linear-gradient(135deg, #FAF3E0 0%, #F5E6CC 100%)',
     overflow: 'hidden',
   },
   container: {
     display: 'flex',
     alignItems: 'center',
-    gap: '6rem',
+    gap: 'clamp(2rem, 8vw, 6rem)',
   },
   visual: {
     flex: 1,
     position: 'relative',
     display: 'flex',
     justifyContent: 'center',
+    padding: '2rem 0',
   },
   bookStack: {
     position: 'relative',
-    transform: 'perspective(1000px) rotateY(-15deg)',
+    transform: 'perspective(1000px) rotateY(-10deg)',
     transition: 'all 0.5s ease',
     cursor: 'pointer',
+    maxWidth: '280px',
   },
   bookMain: {
     boxShadow: '20px 20px 60px rgba(0,0,0,0.2)',
@@ -80,6 +82,8 @@ const styles = {
     padding: '8px',
   },
   image: {
+    width: '100%',
+    height: 'auto',
     display: 'block',
     objectFit: 'contain',
   },
@@ -89,17 +93,17 @@ const styles = {
     right: '-20px',
     background: 'var(--accent-gold)',
     color: 'var(--dark-maroon)',
-    padding: '1.5rem 0.8rem',
+    padding: '1rem',
     borderRadius: '50%',
     fontWeight: '700',
-    fontSize: '0.9rem',
+    fontSize: '0.85rem',
     boxShadow: '0 10px 20px rgba(212, 175, 55, 0.3)',
     textAlign: 'center',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'center',
-    width: '90px',
-    height: '90px',
+    width: '80px',
+    height: '80px',
     zIndex: 2,
     border: '2px solid #FFF',
   },
@@ -107,7 +111,7 @@ const styles = {
     flex: 1.2,
   },
   subtitle: {
-    fontSize: '1rem',
+    fontSize: '0.9rem',
     color: 'var(--accent-gold)',
     fontWeight: '600',
     textTransform: 'uppercase',
@@ -116,14 +120,14 @@ const styles = {
     marginBottom: '1rem',
   },
   title: {
-    fontSize: '3.5rem',
+    fontSize: 'clamp(2rem, 6vw, 3.5rem)',
     color: 'var(--dark-maroon)',
-    fontWeight: '700',
+    fontWeight: '800',
     marginBottom: '1.5rem',
     lineHeight: '1.1',
   },
   description: {
-    fontSize: '1.2rem',
+    fontSize: '1.1rem',
     color: 'var(--text-muted)',
     lineHeight: '1.8',
     marginBottom: '2.5rem',
@@ -136,48 +140,49 @@ const styles = {
     marginBottom: '3rem',
   },
   price: {
-    fontSize: '2.5rem',
+    fontSize: '2.2rem',
     fontWeight: '700',
     color: 'var(--dark-maroon)',
   },
   discount: {
     background: 'var(--dark-maroon)',
     color: '#FFF',
-    padding: '0.4rem 1.2rem',
+    padding: '0.4rem 1rem',
     borderRadius: '100px',
-    fontSize: '0.9rem',
+    fontSize: '0.85rem',
     fontWeight: '600',
   },
   btnGroup: {
     display: 'flex',
-    gap: '1.5rem',
+    gap: '1rem',
+    flexWrap: 'wrap',
   },
   buyBtn: {
     background: 'var(--dark-maroon)',
     color: '#FFF',
     border: 'none',
-    padding: '1.2rem 2.5rem',
-    borderRadius: '12px',
-    fontSize: '1.1rem',
+    padding: '1rem 2rem',
+    borderRadius: '50px',
+    fontSize: '1rem',
     fontWeight: '700',
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
-    gap: '12px',
+    gap: '10px',
     transition: 'all 0.3s ease',
   },
   detailsBtn: {
     background: 'transparent',
     border: '2px solid var(--dark-maroon)',
     color: 'var(--dark-maroon)',
-    padding: '1.2rem 2.5rem',
-    borderRadius: '12px',
-    fontSize: '1.1rem',
+    padding: '1rem 2rem',
+    borderRadius: '50px',
+    fontSize: '1rem',
     fontWeight: '700',
     cursor: 'pointer',
     display: 'flex',
     alignItems: 'center',
-    gap: '12px',
+    gap: '10px',
     transition: 'all 0.3s ease',
   }
 };

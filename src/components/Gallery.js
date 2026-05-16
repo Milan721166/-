@@ -2,20 +2,20 @@ import Image from 'next/image';
 
 export default function Gallery() {
   const images = [
-    "/galary/1.png",
-    "/galary/2.png",
-    "/galary/3.png",
-    "/galary/4.png",
-    "/galary/5.png",
-    "/galary/6.png",
+    { src: '/galary/1.png', size: 'large' },
+    { src: '/galary/2.png', size: 'small' },
+    { src: '/galary/3.png', size: 'small' },
+    { src: '/galary/4.png', size: 'small' },
+    { src: '/galary/5.png', size: 'small' },
+    { src: '/galary/6.png', size: 'large' },
   ];
 
   return (
-    <section style={styles.section}>
+    <section style={styles.section} className="section-padding">
       <div className="container">
         <div style={styles.header}>
-          <span style={styles.subtitle}>স্মৃতির পাতায় নবদিগন্ত</span>
-          <h2 style={styles.title}>ফটো গ্যালারি</h2>
+          <span style={styles.subtitle}>আমাদের ইভেন্ট</span>
+          <h2 style={styles.title}>ছবিতে নবদিগন্ত</h2>
           <div style={styles.separator}>
             <svg width="200" height="40" viewBox="0 0 200 40" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path d="M100 20C100 20 90 10 80 10C70 10 60 20 60 20C60 20 70 30 80 30C90 30 100 20 100 20Z" stroke="var(--accent-gold)" strokeWidth="2"/>
@@ -27,24 +27,34 @@ export default function Gallery() {
           </div>
         </div>
         
-        <div style={styles.grid}>
-          {images.map((url, i) => (
-            <div key={i} style={styles.imgCard} className="gallery-item">
-              <Image src={url} alt={`Gallery ${i + 1}`} fill style={{objectFit: 'cover'}} />
+        <div style={styles.masonry}>
+          {images.map((img, i) => (
+            <div key={i} style={{
+              ...styles.imgCard,
+              gridColumn: img.size === 'large' ? 'span 2' : 'span 1',
+              gridRow: img.size === 'large' ? 'span 2' : 'span 1'
+            }} className="gallery-item">
+              <Image src={img.src} alt="Gallery" fill style={{objectFit: 'cover'}} />
+              <div style={styles.hoverOverlay}>
+                <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                  <path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path>
+                  <circle cx="12" cy="12" r="3"></circle>
+                </svg>
+              </div>
             </div>
           ))}
         </div>
-        
-        <div style={styles.footer}>
-          <button style={styles.moreBtn}>
-            আরও ছবি দেখুন 
-            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" style={{marginLeft: '10px'}}>
-              <line x1="5" y1="12" x2="19" y2="12"></line>
-              <polyline points="12 5 19 12 12 19"></polyline>
-            </svg>
-          </button>
-        </div>
       </div>
+
+      <style jsx>{`
+        @media (max-width: 768px) {
+          .gallery-item {
+            grid-column: span 2 !important;
+            grid-row: span 1 !important;
+            height: 250px !important;
+          }
+        }
+      `}</style>
     </section>
   );
 }
@@ -52,20 +62,21 @@ export default function Gallery() {
 const styles = {
   section: {
     padding: '100px 0',
-    backgroundColor: '#FAF3E0',
+    backgroundColor: '#FFF9EF',
   },
   header: {
     textAlign: 'center',
     marginBottom: '4rem',
   },
   subtitle: {
-    fontSize: '1rem',
+    fontSize: '0.9rem',
     color: 'var(--accent-gold)',
     display: 'block',
     marginBottom: '0.5rem',
+    fontWeight: '500',
   },
   title: {
-    fontSize: '2.8rem',
+    fontSize: 'clamp(2rem, 5vw, 2.8rem)',
     color: 'var(--dark-maroon)',
     fontWeight: '700',
     marginBottom: '1rem',
@@ -73,39 +84,32 @@ const styles = {
   separator: {
     display: 'flex',
     justifyContent: 'center',
-    marginBottom: '2rem',
+    marginBottom: '1rem',
   },
-  grid: {
+  masonry: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-    gap: '2rem',
-    marginBottom: '4rem',
+    gridTemplateColumns: 'repeat(4, 1fr)',
+    gap: '1.5rem',
+    gridAutoRows: '200px',
   },
   imgCard: {
-    height: '300px',
     position: 'relative',
-    borderRadius: '12px',
+    borderRadius: '16px',
     overflow: 'hidden',
+    cursor: 'pointer',
     boxShadow: '0 10px 30px rgba(0,0,0,0.1)',
-    transition: 'all 0.3s ease',
-    cursor: 'pointer',
-    border: '4px solid #FFF',
   },
-  footer: {
-    textAlign: 'center',
-  },
-  moreBtn: {
-    background: '#FFF',
-    border: '1px solid var(--dark-maroon)',
-    color: 'var(--dark-maroon)',
-    padding: '0.8rem 2.5rem',
-    borderRadius: '8px',
-    fontWeight: '600',
-    cursor: 'pointer',
-    fontSize: '1rem',
+  hoverOverlay: {
+    position: 'absolute',
+    top: 0,
+    left: 0,
+    right: 0,
+    bottom: 0,
+    background: 'rgba(93, 16, 16, 0.4)',
     display: 'flex',
+    justifyContent: 'center',
     alignItems: 'center',
-    margin: '0 auto',
-    transition: 'all 0.2s ease',
+    opacity: 0,
+    transition: 'opacity 0.3s ease',
   }
 };

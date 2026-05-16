@@ -10,7 +10,7 @@ export default function AboutSection() {
         </svg>
       ), 
       value: "৫০০+", 
-      label: "বই প্রকাশিত" 
+      label: "বই" 
     },
     { 
       icon: (
@@ -31,7 +31,7 @@ export default function AboutSection() {
         </svg>
       ), 
       value: "৪.৮", 
-      label: "গড় রেটিং" 
+      label: "রেটিং" 
     },
     { 
       icon: (
@@ -45,15 +45,14 @@ export default function AboutSection() {
   ];
 
   return (
-    <section style={styles.section}>
+    <section style={styles.section} className="section-padding">
       <div style={styles.background}></div>
-      <div className="container" style={styles.container}>
+      <div className="container flex-responsive" style={styles.container}>
         <div style={styles.content}>
           <span style={styles.subtitle}>আমাদের সম্পর্কে</span>
-          <h2 style={styles.title}>প্রথমবার কেনাকাটায় ২০% ছাড়</h2>
+          <h2 style={styles.title}>বাংলা সাহিত্যকে নিয়ে যাচ্ছি নতুন প্রজন্মের কাছে</h2>
           <div style={styles.description}>
-            <p>কলেজ স্ট্রিটের যাত্রা থেকে ডিজিটাল দুনিয়ায় — বাংলা সাহিত্যকে নিয়ে যাচ্ছি নতুন প্রজন্মের কাছে। আমরা বিশ্বাস করি প্রতিটি মানুষের মধ্যে একজন লেখক আছেন।</p>
-            <p>ডিজিটাল ম্যাগাজিনের সংস্কৃতি থেকে অনুপ্রাণিত হয়ে আমরা তৈরি করেছি এমন একটি প্ল্যাটফর্ম যেখানে যেকোনো লেখক তাদের সৃষ্টি প্রকাশ করতে পারবেন।</p>
+            <p>কলেজ স্ট্রিটের যাত্রা থেকে ডিজিটাল দুনিয়ায় — আমরা বিশ্বাস করি প্রতিটি মানুষের মধ্যে একজন লেখক আছেন। ডিজিটাল ম্যাগাজিনের সংস্কৃতি থেকে অনুপ্রাণিত হয়ে আমরা তৈরি করেছি এমন একটি প্ল্যাটফর্ম যেখানে যেকোনো লেখক তাদের সৃষ্টি প্রকাশ করতে পারবেন।</p>
           </div>
           
           <div style={styles.statsBar}>
@@ -69,7 +68,7 @@ export default function AboutSection() {
           </div>
         </div>
         
-        <div style={styles.visual}>
+        <div style={styles.visual} className="hide-mobile">
           <div style={styles.imageWrapper}>
             <Image 
               src="https://images.unsplash.com/photo-1507842217343-583bb7270b66?auto=format&fit=crop&q=80" 
@@ -101,79 +100,76 @@ const styles = {
     backgroundImage: 'url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80")',
     backgroundSize: 'cover',
     backgroundPosition: 'center',
-    filter: 'brightness(0.2) blur(5px)',
+    filter: 'brightness(0.15) blur(5px)',
     zIndex: 1,
   },
   container: {
     position: 'relative',
     zIndex: 2,
-    display: 'flex',
-    gap: '5rem',
-    alignItems: 'center',
+    width: '100%',
   },
   content: {
     flex: 1,
   },
   subtitle: {
     color: 'var(--accent-gold)',
-    fontSize: '1rem',
+    fontSize: '0.9rem',
     fontWeight: '600',
     display: 'block',
     marginBottom: '1rem',
+    letterSpacing: '2px',
   },
   title: {
-    fontSize: '2.8rem',
-    fontWeight: '700',
+    fontSize: 'clamp(1.8rem, 5vw, 2.8rem)',
+    fontWeight: '800',
     marginBottom: '1.5rem',
     lineHeight: '1.2',
   },
   description: {
-    fontSize: '1.1rem',
+    fontSize: '1.05rem',
     lineHeight: '1.8',
     opacity: 0.8,
     marginBottom: '3rem',
   },
   statsBar: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    gap: '1rem',
-    background: 'rgba(255, 255, 255, 0.05)',
+    gridTemplateColumns: 'repeat(auto-fit, minmax(100px, 1fr))',
+    gap: '1.5rem',
+    background: 'rgba(255, 255, 255, 0.08)',
     backdropFilter: 'blur(10px)',
-    padding: '1.5rem',
-    borderRadius: '12px',
-    border: '1px solid rgba(255, 255, 255, 0.1)',
+    padding: '2rem',
+    borderRadius: '20px',
+    border: '1px solid rgba(255, 255, 255, 0.15)',
   },
   statItem: {
     textAlign: 'center',
-    borderRight: '1px solid rgba(255, 255, 255, 0.1)',
-    padding: '0 0.5rem',
   },
   statIcon: {
     display: 'flex',
     justifyContent: 'center',
-    marginBottom: '0.5rem',
+    marginBottom: '0.8rem',
     color: 'var(--accent-gold)',
-    opacity: 0.9,
   },
   statValue: {
-    fontSize: '1.4rem',
-    fontWeight: '700',
+    fontSize: '1.5rem',
+    fontWeight: '800',
     color: 'var(--accent-gold)',
     display: 'block',
   },
   statLabel: {
-    fontSize: '0.75rem',
+    fontSize: '0.7rem',
     opacity: 0.6,
     textTransform: 'uppercase',
+    letterSpacing: '1px',
   },
   visual: {
     flex: 0.8,
   },
   imageWrapper: {
-    borderRadius: '20px',
+    borderRadius: '24px',
     overflow: 'hidden',
-    boxShadow: '0 30px 60px rgba(0,0,0,0.5)',
-    border: '4px solid rgba(255,255,255,0.1)',
+    boxShadow: '0 30px 60px rgba(0,0,0,0.6)',
+    border: '1px solid rgba(255,255,255,0.1)',
   },
   image: {
     width: '100%',

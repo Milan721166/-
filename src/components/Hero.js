@@ -2,17 +2,18 @@ import Image from 'next/image';
 
 export default function Hero() {
   return (
-    <section style={styles.hero}>
+    <section style={styles.hero} className="section-padding">
       {/* Background Overlay */}
       <div style={styles.overlay}></div>
       
-      <div className="container" style={styles.container}>
+      <div className="container flex-responsive" style={styles.container}>
         <div style={styles.content}>
           <div style={styles.badge} className="animate-fade">
             ✦ বাংলা সাহিত্যের নতুন ঠিকানা ✦
           </div>
           <h1 style={styles.title} className="animate-fade">
-            নবদিগন্তে স্বাগতম — <span style={styles.accentText}>সাহিত্য নতুন পথে</span>
+            নবদিগন্তে স্বাগতম — <br className="hide-mobile" />
+            <span style={styles.accentText}>সাহিত্য নতুন পথে</span>
           </h1>
           <h2 style={styles.tagline} className="animate-fade">পড়ুন, লিখুন, প্রকাশ করুন</h2>
           <p style={styles.subtitle} className="animate-fade">
@@ -32,7 +33,7 @@ export default function Hero() {
                 <path d="M12 20h9"></path>
                 <path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"></path>
               </svg>
-              আপনার বই প্রকাশ করুন
+              প্রকাশ করুন
             </button>
           </div>
           
@@ -52,7 +53,7 @@ export default function Hero() {
           </div>
         </div>
         
-        <div style={styles.visual} className="animate-fade">
+        <div style={styles.visual} className="animate-fade hide-mobile">
           <div style={styles.bookGrid}>
             <div style={{...styles.bookWrapper, top: '0', left: '0', zIndex: 1, transform: 'rotate(-10deg)'}}>
               <Image src="/1.png" alt="Book 1" width={180} height={260} style={styles.bookCover} priority />
@@ -76,8 +77,8 @@ export default function Hero() {
 const styles = {
   hero: {
     minHeight: '100vh',
-    paddingTop: '180px',
-    paddingBottom: '100px',
+    paddingTop: '160px',
+    paddingBottom: '80px',
     position: 'relative',
     background: '#5D1010',
     backgroundImage: 'url("https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&q=80")',
@@ -85,6 +86,8 @@ const styles = {
     backgroundPosition: 'center',
     color: '#FFF',
     overflow: 'hidden',
+    display: 'flex',
+    alignItems: 'center',
   },
   overlay: {
     position: 'absolute',
@@ -92,42 +95,40 @@ const styles = {
     left: 0,
     right: 0,
     bottom: 0,
-    background: 'linear-gradient(90deg, rgba(93, 16, 16, 0.95) 30%, rgba(93, 16, 16, 0.6) 100%)',
+    background: 'linear-gradient(to right, rgba(93, 16, 16, 0.98) 20%, rgba(93, 16, 16, 0.7) 100%)',
     zIndex: 1,
   },
   container: {
     position: 'relative',
     zIndex: 2,
-    display: 'flex',
-    alignItems: 'center',
-    justifyContent: 'space-between',
+    width: '100%',
   },
   content: {
-    maxWidth: '700px',
+    maxWidth: '750px',
   },
   badge: {
     display: 'inline-block',
-    padding: '0.4rem 1.2rem',
+    padding: '0.4rem 1rem',
     border: '1px solid var(--accent-gold)',
     borderRadius: '100px',
     color: 'var(--accent-gold)',
-    fontSize: '0.85rem',
+    fontSize: '0.8rem',
     fontWeight: '600',
-    marginBottom: '2rem',
+    marginBottom: '1.5rem',
     background: 'rgba(212, 175, 55, 0.1)',
   },
   title: {
-    fontSize: 'clamp(2.5rem, 6vw, 4rem)',
-    fontWeight: '700',
-    lineHeight: '1.2',
-    marginBottom: '1rem',
+    fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
+    fontWeight: '800',
+    lineHeight: '1.1',
+    marginBottom: '1.5rem',
   },
   accentText: {
     color: 'var(--accent-gold)',
-    textShadow: '0 0 20px rgba(212, 175, 55, 0.3)',
+    textShadow: '0 0 30px rgba(212, 175, 55, 0.4)',
   },
   tagline: {
-    fontSize: '1.8rem',
+    fontSize: 'clamp(1.4rem, 4vw, 2rem)',
     color: 'var(--accent-gold)',
     marginBottom: '1.5rem',
     fontWeight: '600',
@@ -135,13 +136,14 @@ const styles = {
   subtitle: {
     fontSize: '1.1rem',
     lineHeight: '1.7',
-    opacity: 0.9,
+    opacity: 0.8,
     marginBottom: '2.5rem',
     maxWidth: '550px',
   },
   btnGroup: {
     display: 'flex',
-    gap: '1.2rem',
+    gap: '1rem',
+    flexWrap: 'wrap',
     marginBottom: '4rem',
   },
   mainBtn: {
@@ -149,22 +151,24 @@ const styles = {
     padding: '1rem 2.5rem',
     display: 'flex',
     alignItems: 'center',
+    borderRadius: '50px',
   },
   secondaryBtn: {
     fontSize: '1rem',
     padding: '1rem 2.5rem',
     display: 'flex',
     alignItems: 'center',
+    borderRadius: '50px',
   },
   stats: {
     display: 'flex',
-    gap: '4rem',
+    gap: 'clamp(2rem, 5vw, 4rem)',
     alignItems: 'center',
+    flexWrap: 'wrap',
   },
   statItem: {
     display: 'flex',
     flexDirection: 'column',
-    alignItems: 'center',
   },
   statValue: {
     fontSize: '2rem',
@@ -173,13 +177,14 @@ const styles = {
     marginBottom: '0.2rem',
   },
   statLabel: {
-    fontSize: '1rem',
-    opacity: 0.8,
+    fontSize: '0.9rem',
+    opacity: 0.7,
   },
   visual: {
     position: 'relative',
-    width: '500px',
-    height: '650px',
+    width: '450px',
+    height: '600px',
+    marginLeft: 'auto',
   },
   bookGrid: {
     position: 'relative',
@@ -191,7 +196,7 @@ const styles = {
     borderRadius: '8px',
     boxShadow: '0 30px 60px rgba(0,0,0,0.6)',
     overflow: 'hidden',
-    transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+    transition: 'all 0.5s ease',
     background: '#FFF',
     padding: '5px',
   },
